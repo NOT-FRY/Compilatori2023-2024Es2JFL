@@ -1,12 +1,17 @@
-name Mario
+if (x < 10) {
+    y = 20;
+    z = x + 5.5;
+}
+else {
+    y = 30;
+    z = x - 3.2;
+}
 
-Hello
-This is a sample input file for the
-standalone example scanner.
+while (x != 0) {
+    x = x - 1;
+}
+int ciao <--5;
+1ciao + 45;
+"ciao"
 
-Have a nice day!
-
-name Michele
-
-hello
 

@@ -1,3 +1,5 @@
+package jflex.generated;
+
 public class Token {
 
     public static final int ERROR=-1;
@@ -28,7 +30,6 @@ public class Token {
     public static final int MIN=24;
     public static final int MUL=25;
     public static final int DIV=26;
-
     public static final int STRING_LITERAL=27;
 
 }
