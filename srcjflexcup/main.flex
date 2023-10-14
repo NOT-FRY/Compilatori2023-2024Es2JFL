@@ -13,13 +13,12 @@ import java_cup.runtime.*;
 %cup
 
 %{
-    StringBuffer string = new StringBuffer();
         private Symbol symbol(int type) {
             return new Symbol(type, yyline, yycolumn);
         }
-    private Symbol symbol(int type, Object value) {
-        return new Symbol(type, yyline, yycolumn, value);
-    }
+        private Symbol symbol(int type, Object value) {
+            return new Symbol(type, yyline, yycolumn, value);
+        }
 %}
 
 /*Whitespaces*/
@@ -114,4 +113,4 @@ FloatingNumber = {IntegerNumber}"."[0-9]+
 /* error fallback */
 
 [^]                {return symbol(jflex.generated.Token.ERROR,"-Carattere non consentito<"+
-                    yytext()+"> a riga "+yyline+"\n" );}
+                    yytext()+"> a riga "+(yyline+1)+"\n" );}
