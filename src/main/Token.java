@@ -1,6 +1,6 @@
 package main;
 
-public class Symbol {
+public class Token {
 
     public static final int ERROR=-1;
     public static final int EOF=0;

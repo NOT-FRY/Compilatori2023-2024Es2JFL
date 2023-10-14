@@ -4,6 +4,7 @@
 
 %class Lexer
 %unicode
+%line
 %cupsym Token
 %cup
 
@@ -22,7 +23,7 @@ DocumentationComment = "/**" {CommentContent} "*"+ "/"
 CommentContent = ( [^*] | \*+ [^/*] )*
 
 
-Identifier = [:jletter:] [:jletterdigit:]*
+Identifier = [A-Za-z] ( [A-Za-z_] | [0-9] )*
 
 IntegerNumber = 0 | [1-9][0-9]*
 FloatingNumber = IntegerNumber.[0-9]+
