@@ -32,7 +32,6 @@ public class Token {
     public static final int MUL=25;
     public static final int DIV=26;
 
-
-
+    public static final int STRING_LITERAL=27;
 
 }
