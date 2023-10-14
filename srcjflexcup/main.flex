@@ -11,7 +11,6 @@ import java_cup.runtime.*;
 %column
 %cupsym jflex.generated.Token
 %cup
-%standalone
 
 %{
     StringBuffer string = new StringBuffer();
@@ -36,6 +35,9 @@ TraditionalComment = "/*" [^*] ~"*/" | "/*" "*"+ "/"
 EndOfLineComment = "//" {InputCharacter}* {LineTerminator}?
 DocumentationComment = "/**" {CommentContent} "*"+ "/"
 CommentContent = ( [^*] | \*+ [^/*] )*
+
+WHITE_SPACE_CHAR=[\n\r\ \t\b\012]
+STRING_TEXT=(\\\"|[^\n\r\"\\]|\\{WHITE_SPACE_CHAR}+\\)*
 
 
 Identifier = [A-Za-z] ( [A-Za-z_] | [0-9] )*
@@ -99,22 +101,14 @@ FloatingNumber = {IntegerNumber}"."[0-9]+
 /*Commenti*/
 <YYINITIAL> {Comment}      { /*ignora*/ }
 
-/*String literals*/
-\"                    { string.setLength(0); yybegin(STRING); }
 
-<STRING> {
-    \"              {
-                        yybegin(YYINITIAL);
-                        return symbol(jflex.generated.Token.STRING_LITERAL,
-                        string.toString());
-                    }
-    [^\n\r\"\\]+    { string.append( yytext() ); }
-    \\t             { string.append('\t'); }
-    \\n             { string.append('\n'); }
-    \\r             { string.append('\r'); }
-    \\\" { string.append('\"'); }
-    \\ { string.append('\\'); }
-}
+
+/*String literals*/
+
+  \"{STRING_TEXT}\" {
+    String str =  yytext().substring(1,yylength()-1);
+    return symbol(jflex.generated.Token.STRING_LITERAL,str);
+  }
 
 
 /* error fallback */
