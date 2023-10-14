@@ -1,5 +1,3 @@
-package main;
-
 public class Token {
 
     public static final int ERROR=-1;
@@ -19,7 +17,6 @@ public class Token {
     public static final int RCUR=13;
     public static final int COM=14;
     public static final int SEMI=15;
-
     public static final int ASS=16;
     public static final int LT=17;
     public static final int LE=18;

@@ -1,6 +1,7 @@
 /*Import*/
 
 import java_cup.runtime.*;
+import srcjflexcup/Token;
 
 %%
 
@@ -47,55 +48,55 @@ FloatingNumber = IntegerNumber.[0-9]+
 %%
 
 /* keywords */
-<YYINITIAL> "if"              { return symbol(token.IF); }
-<YYINITIAL> "then"            { return symbol(token.THEN); }
-<YYINITIAL> "else"            { return symbol(token.ELSE); }
-<YYINITIAL> "while"            { return symbol(token.WHILE); }
-<YYINITIAL> "int"            { return symbol(token.INT); }
-<YYINITIAL> "float"            { return symbol(token.FLOAT); }
+<YYINITIAL> "if"              { return symbol(Token.IF); }
+<YYINITIAL> "then"            { return symbol(Token.THEN); }
+<YYINITIAL> "else"            { return symbol(Token.ELSE); }
+<YYINITIAL> "while"            { return symbol(Token.WHILE); }
+<YYINITIAL> "int"            { return symbol(Token.INT); }
+<YYINITIAL> "float"            { return symbol(Token.FLOAT); }
 
 
 /*Whitespaces*/
-<YYNITIAL> {WhiteSpace}      { /*ignora*/ }
+<YYINITIAL> {WhiteSpace}      { /*ignora*/ }
 
 
 /*Identificatori e Literals*/
-<YYNITIAL>{
-    {Identifier}            { return symbol(token.ID); }
+<YYINITIAL>{
+    {Identifier}            { return symbol(Token.ID); }
 
-    {IntegerNumber}         {return symbol(token.INUMBER);}
+    {IntegerNumber}         {return symbol(Token.INUMBER);}
 
-    {FloatingNumber}        {return symbol(token.FNUMBER);}
+    {FloatingNumber}        {return symbol(Token.FNUMBER);}
 
 }
 
 /*Separatori*/
-<YYNITIAL>{
-    "("           { return symbol(token.LPAR); }
-    ")"           { return symbol(token.RPAR); }
-    "{"           { return symbol(token.LCUR); }
-    "}"           { return symbol(token.RCUR); }
-    ","           { return symbol(token.COM); }
-    ";"           { return symbol(token.SEMI); }
+<YYINITIAL>{
+    "("           { return symbol(Token.LPAR); }
+    ")"           { return symbol(Token.RPAR); }
+    "{"           { return symbol(Token.LCUR); }
+    "}"           { return symbol(Token.RCUR); }
+    ","           { return symbol(Token.COM); }
+    ";"           { return symbol(Token.SEMI); }
 }
 
 /*Operatori*/
-<YYNITIAL>{
-    "<--"           { return symbol(token.ASS); }
-    "<"           { return symbol(token.LT); }
-    "<="           { return symbol(token.LE); }
-    ">"           { return symbol(token.GT); }
-    ">="           { return symbol(token.GE); }
-    "="           { return symbol(token.EQ); }
-    "!="           { return symbol(token.NE); }
-    "+"           { return symbol(token.ADD); }
-    "-"           { return symbol(token.MIN); }
-    "*"           { return symbol(token.MUL); }
-    "/"           { return symbol(token.DIV); }
+<YYINITIAL>{
+    "<--"           { return symbol(Token.ASS); }
+    "<"           { return symbol(Token.LT); }
+    "<="           { return symbol(Token.LE); }
+    ">"           { return symbol(Token.GT); }
+    ">="           { return symbol(Token.GE); }
+    "="           { return symbol(Token.EQ); }
+    "!="           { return symbol(Token.NE); }
+    "+"           { return symbol(Token.ADD); }
+    "-"           { return symbol(Token.MIN); }
+    "*"           { return symbol(Token.MUL); }
+    "/"           { return symbol(Token.DIV); }
 }
 
 /*Commenti*/
-<YYNITIAL> {Comment}      { /*ignora*/ }
+<YYINITIAL> {Comment}      { /*ignora*/ }
 
 /*String literals*/
 \"                  { string.setLength(0); yybegin(STRING); }
@@ -103,18 +104,19 @@ FloatingNumber = IntegerNumber.[0-9]+
 <STRING> {
     \"              {
                         yybegin(YYINITIAL);
-                        return symbol(token.STRING_LITERAL,
+                        return symbol(Token.STRING_LITERAL,
                         string.toString());
                     }
     [^\n\r\"\\]+    { string.append( yytext() ); }
-    \\t             { string.append(’\t’); }
-    \\n             { string.append(’\n’); }
-    \\r             { string.append(’\r’); }
-    \\\" { string.append(’\"’); }
-    \\ { string.append(’\\’); }
+    \\t             { string.append('\t'); }
+    \\n             { string.append('\n'); }
+    \\r             { string.append('\r'); }
+    \\\" { string.append('\"'); }
+    \\ { string.append('\\'); }
 }
 
 
 /* error fallback */
-[^]                {return symbol(token.ERROR,"-Carattere non consentito<"+
+
+[^]                {return symbol(Token.ERROR,"-Carattere non consentito<"+
                     yytext()+"> a riga "+yyline()+"\n" );}
