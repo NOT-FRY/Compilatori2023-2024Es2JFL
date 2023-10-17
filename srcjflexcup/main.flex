@@ -112,5 +112,5 @@ FloatingNumber = {IntegerNumber}"."[0-9]+
 
 /* error fallback */
 
-[^]                {return symbol(jflex.generated.Token.ERROR,"-Carattere non consentito<"+
-                    yytext()+"> a riga "+(yyline+1)+"\n" );}
+[^]                {return symbol(jflex.generated.Token.ERROR,"- Carattere non consentito < "+
+                    yytext()+" > a riga "+(yyline+1)+"\n" );}

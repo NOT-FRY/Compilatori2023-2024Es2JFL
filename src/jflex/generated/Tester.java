@@ -4,12 +4,12 @@ import java_cup.runtime.Symbol;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 
-public class Main {
+public class Tester {
     public static void main(String[] args) {
         Lexer lexicalAnalyzer = null;
         try {
             if (args.length == 0) {
-                System.out.println("Usage: java Main <input_file>");
+                System.out.println("Argomenti insufficienti\n Inserire il nome del file come parametro");
                 return;
             }
 
@@ -22,7 +22,10 @@ public class Main {
             try {
                 Symbol token;
                 while ((token = lexicalAnalyzer.next_token()).sym != Token.EOF) {
-                    System.out.println(Token.getTokenStr(token));
+                    System.out.print(Token.getTokenStr(token)+" ");
+                    if(token.value!=null)
+                        System.out.print(token.value.toString());
+                    System.out.println();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

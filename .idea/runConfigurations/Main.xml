@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Main" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="jflex.generated.Tester" />
+    <module name="DiLauro-Ciancio_es2_jfl" />
+    <option name="PROGRAM_PARAMETERS" value="&quot;test/sample.inp&quot;" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

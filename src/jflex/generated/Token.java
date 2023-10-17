@@ -63,6 +63,8 @@ public class Token {
                 return "RPAR";
             case Token.LCUR:
                 return "LCUR";
+            case Token.RCUR:
+                return "RCUR";
             case Token.COM:
                 return "COM";
             case Token.SEMI:
