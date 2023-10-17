@@ -35,18 +35,65 @@ public class Token {
     public static final int STRING_LITERAL=27;
 
 
-    private static final String[] tokenStrings = {
-            "ERROR", "EOF", "IF", "THEN", "ELSE", "WHILE", "INT", "FLOAT", "ID",
-            "INUMBER", "FNUMBER", "LPAR", "RPAR", "LCUR", "RCUR", "COM", "SEMI",
-            "ASS", "LT", "LE", "GT", "GE", "EQ", "NE", "ADD", "MIN", "MUL",
-            "DIV", "STRING_LITERAL"
-    };
-
     public static String getTokenStr(Symbol token) {
-        int index = token.sym;
-        if (index >= 0 && index < tokenStrings.length) {
-            return tokenStrings[index];
+        switch (token.sym) {
+            case Token.ERROR:
+                return "ERROR";
+            case Token.IF:
+                return "IF";
+            case Token.THEN:
+                return "THEN";
+            case Token.ELSE:
+                return "ELSE";
+            case Token.WHILE:
+                return "WHILE";
+            case Token.INT:
+                return "INT";
+            case Token.FLOAT:
+                return "FLOAT";
+            case Token.ID:
+                return "ID";
+            case Token.INUMBER:
+                return "INUMBER";
+            case Token.FNUMBER:
+                return "FNUMBER";
+            case Token.LPAR:
+                return "LPAR";
+            case Token.RPAR:
+                return "RPAR";
+            case Token.LCUR:
+                return "LCUR";
+            case Token.COM:
+                return "COM";
+            case Token.SEMI:
+                return "SEMI";
+            case Token.ASS:
+                return "ASS";
+            case Token.LT:
+                return "LT";
+            case Token.LE:
+                return "LE";
+            case Token.GT:
+                return "GT";
+            case Token.GE:
+                return "GE";
+            case Token.EQ:
+                return "EQ";
+            case Token.NE:
+                return "NE";
+            case Token.ADD:
+                return "ADD";
+            case Token.MIN:
+                return "MIN";
+            case Token.MUL:
+                return "MUL";
+            case Token.DIV:
+                return "DIV";
+            case Token.STRING_LITERAL:
+                return "STRING_LITERAL";
+
+            default:
+                return "Token non riconosciuto";
         }
-        return "Sconosciuto";
     }
 }
