@@ -1,15 +1,25 @@
-if (x < 10) {
-    y = 20;
-    z = x + 5.5;
-}
-else {
-    y = 30;
-    z = x - 3.2;
-}
+public class Main {
+    public static void main(String[] args) {
 
-while (x != 0) {
-    x = x - 1;
+        System.out.println("Benvenuto nel mio programma Java!");
+
+
+        int numero = 42;
+
+
+        if (numero > 0) {
+            System.out.println("Il numero è positivo.");
+        } else if (numero < 0) {
+            System.out.println("Il numero è negativo.");
+        } else {
+            System.out.println("Il numero è zero.");
+        }
+
+
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Iterazione " + i);
+        }
+
+        System.out.println("Grazie per aver usato il mio programma!");
+    }
 }
-int ciao <--5;
-1ciao + 45;
-String ciao = "test ciaociao";

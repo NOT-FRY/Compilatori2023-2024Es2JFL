@@ -1,5 +1,7 @@
 package jflex.generated;
 
+import java_cup.runtime.Symbol;
+
 public class Token {
 
     public static final int ERROR=-1;
@@ -32,4 +34,19 @@ public class Token {
     public static final int DIV=26;
     public static final int STRING_LITERAL=27;
 
+
+    private static final String[] tokenStrings = {
+            "ERROR", "EOF", "IF", "THEN", "ELSE", "WHILE", "INT", "FLOAT", "ID",
+            "INUMBER", "FNUMBER", "LPAR", "RPAR", "LCUR", "RCUR", "COM", "SEMI",
+            "ASS", "LT", "LE", "GT", "GE", "EQ", "NE", "ADD", "MIN", "MUL",
+            "DIV", "STRING_LITERAL"
+    };
+
+    public static String getTokenStr(Symbol token) {
+        int index = token.sym;
+        if (index >= 0 && index < tokenStrings.length) {
+            return tokenStrings[index];
+        }
+        return "Sconosciuto";
+    }
 }
